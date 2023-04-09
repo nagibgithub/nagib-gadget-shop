@@ -1,7 +1,8 @@
 import React from 'react'
 
 const ProductCard = ({product, handleAddToCart}) => {
-  const { name, picture, price, category, id } = product
+  console.log(product);
+  const {name, picture, price, category, id} = product
   return (
     <div className='bg-gray-100 p-6 rounded shadow-lg'>
       <img
