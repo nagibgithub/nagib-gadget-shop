@@ -1,16 +1,22 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductCard from './Cards/ProductCard';
+import { addToDb } from '../utilities/functionDB';
 
 const Shop = () => {
 
     const loaderData = useLoaderData()
-    console.log(loaderData);
-
+    const handleAddToCart = (id) => {
+        addToDb(id)
+    }
     return (
-        <div className='grid md:grid-cols-2 lg:grid-cols-3'>
+        <div className='my-own'>
             {
-                loaderData.map(product => <ProductCard key={product.id} product={product}></ProductCard>)
+                loaderData.map(product => <ProductCard
+                    key={ product.id }
+                    product={ product }
+                    handleAddToCart={ handleAddToCart }
+                ></ProductCard>)
             }
         </div>
     );
