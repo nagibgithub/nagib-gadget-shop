@@ -6,16 +6,25 @@ const addToDb = (id) => {
     if (storedCart) {
         shopCart = JSON.parse(storedCart)
     }
-
     if (!shopCart[id]) {
         shopCart[id] = 1
     } else {
         shopCart[id]++
     }
     localStorage.setItem('shop-cart', JSON.stringify(shopCart))
+}
 
+// get data from Local Storage
+const getDataFromDB = () => {
+    const localStorageData = localStorage.getItem('shop-cart')
+    let storedData = {};
+    if (localStorageData) {
+        storedData = JSON.parse(localStorageData)
+    }
+    return storedData
 }
 
 export {
     addToDb,
+    getDataFromDB,
 }
